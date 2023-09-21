@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin-bottom: 220px;
+}
+
+.footer {
+  height: 170px;
+}
+
+.special-gradient {
+  background: linear-gradient(to right top, #7A53F5 0%, #57bcf3 50%, #57bcf3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.img-container-small {
+  height: 10rem;
+  width: 15rem;
+}
+
+.img-container-medium {
+  height: 20rem !important;
+}
+
+.img-container-large {
+  height: 30rem;
+  width: 35rem;
+}
+
+.img-fit {
+  width: 100%  !important;
+  height: 100% !important;
+  object-fit: scale-down !important;
+}

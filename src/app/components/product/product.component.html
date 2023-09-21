@@ -1,0 +1,34 @@
+<div class="card rounded-4 bg-light border mb-4 mw-100 p-3">
+  <ng-container *ngIf="product; else noProduct">
+    <a [routerLink]="['/products', product.id]">
+      <div class="img-container-medium d-flex justify-content-center align-items-center p-3 m-0">
+        <img [src]="'assets/img/' + product.images[0]" alt="Immagine non trovata" class="img-fit justify-content-center">
+      </div>
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">{{product.name | truncate}}</h5>
+      <h6 class="card-subtitle mb-2">{{product.category}}</h6>
+      <div class="container-fluid px-0">
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-primary" (click)="goToProductDetail()">Vedi</button>
+            <button class="ms-2 btn btn-outline-success" (click)="addToCart()"><i class="bi bi-cart-plus"></i></button>
+          </div>
+          <div class="col d-flex justify-content-end my-auto">
+            <span *ngIf="product.offertPrice" class="fs-6 text-decoration-line-through me-2">
+              {{product.price | currency:"EUR"}}
+            </span>
+            <span [class.visible]="!product.offertPrice" [class.text-danger]="product.offertPrice"
+              [class.fs-6]="product.offertPrice" [class.fs-4]="!product.offertPrice"
+              [class.fw-bold]="product.offertPrice">
+              {{product.offertPrice || product.price | currency:"EUR"}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #noProduct>
+    <span>Prodotto non trovato</span>
+  </ng-template>
+</div>

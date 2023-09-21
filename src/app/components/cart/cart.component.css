@@ -1,0 +1,16 @@
+.position-fixed {
+    padding-top: 150px;
+}
+
+.bi-cart-x, .bi-cart-check {
+    font-size: 200px;
+}
+
+@media screen and (max-width: 992px) {
+    .position-fixed {
+        padding-top: 25px!important;
+        position: relative!important;
+        width: 100%;
+        background-color: #ffffff!important;
+    }
+}

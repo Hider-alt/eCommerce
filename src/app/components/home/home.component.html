@@ -1,0 +1,12 @@
+<div class="container">
+  <ng-container *ngIf="offerProduct">
+    <h1 class="special-gradient">In Offerta</h1>
+    <app-product-details [product]="offerProduct"></app-product-details>
+  </ng-container>
+  <ng-container *ngFor="let p of featuredProducts; index as i">
+    <h2 *ngIf="p.length > 0">{{featuredCategories[i]}}</h2>
+    <app-slide-products [products]="p" [category]="featuredCategories[i]"></app-slide-products>
+  </ng-container>
+</div>
+
+

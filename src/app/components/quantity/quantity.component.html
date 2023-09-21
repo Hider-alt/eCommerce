@@ -1,0 +1,6 @@
+<div class="btn-group">
+    <button type="button" class="btn btn-primary" (click)="remove()"><i class="bi bi-dash-square"></i></button>
+    <input type="text" class="btn btn-primary active ms-1" [value]="quantity" maxlength="2"
+        inputmode="numeric" pattern="[1-9]*" digitOnly (keydown)="changeQuantityKey($event)" (focusout)="changeQuantity($event)">
+    <button type="button" class="btn btn-primary ms-1" (click)="add()"><i class="bi bi-plus-square"></i></button>
+</div>

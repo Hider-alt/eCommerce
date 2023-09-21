@@ -1,0 +1,28 @@
+<div class="container-fluid d-flex border-top border-bottom mh-25 py-3">
+    <ng-container *ngIf="product">
+        <div class="img-container-small">
+            <a [routerLink]="['/products', product.id]">
+                <img src="./../../../assets/img/ps5.png" [src]="'../../../assets/img/'+product.images[0]" class="img-fit">
+            </a>
+        </div>
+        <div class="container">
+            <h4>{{product.name}}</h4>
+            <p class="mb-2">{{product.description | truncate: 100}}</p>
+            <ng-container *ngIf="product.offertPrice == undefined">
+                <h6 class="mb-4">{{product.price | currency: "EUR"}}</h6>
+            </ng-container>
+            <ng-container *ngIf="product.offertPrice != undefined">
+                <h6><del>{{product.price | currency: "EUR"}}</del></h6>
+                <h5 class="text-danger mb-4">{{product.offertPrice | currency: "EUR"}}</h5>
+            </ng-container>
+            <app-quantity [quantity]="getQuantity()" (quantityEvent)="updateQuantity($event)"></app-quantity>
+            <button type="button" class="btn btn-outline-danger mx-3" (click)="remove()"><i
+                    class="bi bi-trash3"></i></button>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!product">
+        <div class="alert alert-danger w-100 mb-0">
+            Prodotto non valido
+        </div>
+    </ng-container>
+</div>

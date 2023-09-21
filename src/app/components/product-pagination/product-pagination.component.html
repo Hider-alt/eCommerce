@@ -1,0 +1,62 @@
+<div class="container my-4">
+  <ng-container *ngIf="products.length > 0; else noProducts">
+    <h2 *ngIf="!searchString && !category">Negozio</h2>
+    <p *ngIf="searchString && category">La tua ricerca "<span class="fw-bold">{{searchString}}</span>" nella categoria <span class="fw-bold">{{category}}</span> ha prodotto i seguenti risultati:</p>
+    <p *ngIf="searchString && !category">La tua ricerca "<span class="fw-bold">{{searchString}}</span>" ha prodotto i seguenti risultati:</p>
+    <p *ngIf="category && !searchString">Prodotti per la categoria <span class="fw-bold">{{category}}</span>:</p>
+    <div class="row">
+      <ng-container *ngFor="let p of products">
+        <app-product class="col-sm-12 col-md-6 col-lg-4" [product]="p"></app-product>
+      </ng-container>
+    </div>
+    <!-- Pages Navigator -->
+    <ng-container *ngIf="maxPage > 1">
+      <nav class="d-flex justify-content-center">
+        <ul class="pagination">
+          <li class="page-item">
+            <a [class.disabled]="page <= 1" class="page-link" (click)="prevPage()">
+              <i class="bi bi-arrow-left"></i>
+            </a>
+          </li>
+          <li [class.d-none]="page - 2 > maxPage || page + 1 <= maxPage" class="page-item">
+            <a class="page-link" (click)="goToPage(page - 2)">
+              {{page - 2}}
+            </a>
+          </li>
+          <li [class.d-none]="page - 1 < 1 || page + 2 <= maxPage" class="page-item">
+            <a class="page-link" (click)="goToPage(page - 1)">
+              {{page - 1}}
+            </a>
+          </li>
+          <li class="page-item active">
+            <a class="page-link">
+              {{page}}
+            </a>
+          </li>
+          <li [class.d-none]="page + 1 > maxPage" class="page-item">
+            <a class="page-link" (click)="goToPage(page + 1)">
+              {{page + 1}}
+            </a>
+          </li>
+          <li [class.d-none]="page + 2 > maxPage" class="page-item">
+            <a class="page-link" (click)="goToPage(page + 2)">
+              {{page + 2}}
+            </a>
+          </li>
+          <li [class.disabled]="page + 1 > maxPage" class="page-item">
+            <a class="page-link" (click)="nextPage()">
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </ng-container>
+  </ng-container>
+  <ng-template #noProducts>
+    <div class="text-center">
+      <i class="fs-1 bi bi-bag-x"></i>
+      <h4>Nessun prodotto qui...</h4>
+      <a [routerLink]="''">Torna alla home</a>
+    </div>
+  </ng-template>
+</div>
