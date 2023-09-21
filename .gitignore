@@ -1,7 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-/dist
 /tmp
 /out-tsc
 /bazel-out
@@ -18,6 +17,7 @@ yarn-error.log
 .c9/
 *.launch
 .settings/
+*.sublime-workspace
 *.sublime-workspace
 
 # Visual Studio Code
