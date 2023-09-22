@@ -2,7 +2,7 @@
     <ng-container *ngIf="product">
         <div class="img-container-small">
             <a [routerLink]="['/products', product.id]">
-                <img [src]="'/assets/img/' + product.images[0]" class="img-fit">
+                <img [src]="'assets/img/' + product.images[0]" class="img-fit">
             </a>
         </div>
         <div class="container">
